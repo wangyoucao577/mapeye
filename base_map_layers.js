@@ -17,7 +17,7 @@ function createMapboxStaticTileLayer(style, token) {
     });
 }
 var mapboxStreetsLayer = createMapboxStaticTileLayer('mapbox/streets-v11', tokens.MapboxAccessToken);
-var mapboxOutdoorLayer = createMapboxStaticTileLayer('mapbox/outdoors-v11', tokens.MapboxAccessToken);
+var mapboxOutdoorsLayer = createMapboxStaticTileLayer('mapbox/outdoors-v11', tokens.MapboxAccessToken);
 var mapboxSatelliteLayer = createMapboxStaticTileLayer('mapbox/satellite-v9', tokens.MapboxAccessToken);
 var mapboxSatelliteStreetsLayer = createMapboxStaticTileLayer('mapbox/satellite-streets-v11', tokens.MapboxAccessToken);
 var mapboxLightLayer = createMapboxStaticTileLayer('mapbox/light-v10', tokens.MapboxAccessToken);
@@ -38,22 +38,26 @@ function createMapboxRasterTileLayer(tileset_id, token){
 }
 var mapboxStreetsRasterTileLayer = createMapboxRasterTileLayer('mapbox.streets', tokens.MapboxAccessToken);
 var mapboxSatelliteRasterTileLayer = createMapboxRasterTileLayer('mapbox.satellite', tokens.MapboxAccessToken);
+var mapboxOutdoorsRasterTileLayer = createMapboxRasterTileLayer('mapbox.outdoors', tokens.MapboxAccessToken);
+var mapboxSatelliteStreetsRasterTileLayer = createMapboxRasterTileLayer('mapbox.streets-satellite', tokens.MapboxAccessToken);
 
 
 // return
 var recommendedBaseMapLayer = mapboxStreetsRasterTileLayer;
 var baseMapLayers = {
-    "Mapbox Streets": mapboxStreetsLayer,
-    "Mapbox Outdoor": mapboxOutdoorLayer, 
-    "Mapbox Satellite": mapboxSatelliteLayer,
-    "Mapbox Satellite Streets": mapboxSatelliteStreetsLayer,
-    "Mapbox Light": mapboxLightLayer,
-    "Mapbox Dark": mapboxDarkLayer,
-    "Mapbox Navigation Preview Day": mapboxNavigationPreviewDayLayer,
-    "Mapbox Navigation Preview Night": mapboxNavigationPreviewNightLayer,
-    "Mapbox Navigation Guidance Day": mapboxNavigationGuidanceDayLayer,
-    "Mapbox Navigation Guidance Night": mapboxNavigationGuidanceNightLayer,
-    "Mapbox Streets (Raster Tile)": mapboxStreetsRasterTileLayer,
-    "Mapbox Satellite (Raster Tile)": mapboxSatelliteRasterTileLayer,
+    "Mapbox(Raster Tile) Streets": mapboxStreetsRasterTileLayer,
+    "Mapbox(Raster Tile) Satellite": mapboxSatelliteRasterTileLayer,
+    "Mapbox(Raster Tile) Outdoors": mapboxOutdoorsRasterTileLayer,
+    "Mapbox(Raster Tile) Satellite Streets": mapboxSatelliteStreetsRasterTileLayer,
+    "Mapbox(Static Tile) Streets": mapboxStreetsLayer,
+    "Mapbox(Static Tile) Outdoors": mapboxOutdoorsLayer, 
+    "Mapbox(Static Tile) Satellite": mapboxSatelliteLayer,
+    "Mapbox(Static Tile) Satellite Streets": mapboxSatelliteStreetsLayer,
+    "Mapbox(Static Tile) Light": mapboxLightLayer,
+    "Mapbox(Static Tile) Dark": mapboxDarkLayer,
+    "Mapbox(Static Tile) Navigation Preview Day": mapboxNavigationPreviewDayLayer,
+    "Mapbox(Static Tile) Navigation Preview Night": mapboxNavigationPreviewNightLayer,
+    "Mapbox(Static Tile) Navigation Guidance Day": mapboxNavigationGuidanceDayLayer,
+    "Mapbox(Static Tile) Navigation Guidance Night": mapboxNavigationGuidanceNightLayer,
     "OpenStreetMap": osmLayer
 };
