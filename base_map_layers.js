@@ -55,6 +55,31 @@ var googleHybrid = L.gridLayer.googleMutant({
 	type: 'hybrid'	// valid values are 'roadmap', 'satellite', 'terrain' and 'hybrid'
 });
 
+// Here Layers
+// https://developer.here.com/documentation/map-tile/dev_guide/topics/quick-start-map-tile.html
+// https://developer.here.com/documentation/map-tile/dev_guide/topics/request-constructing.html#request-constructing__table-basic-request-elements
+function createHereRasterTileLayer(base, variant, apikey){
+    return L.tileLayer('https://{s}.{base}.maps.ls.hereapi.com/maptile/2.1/' +
+    '{type}/{mapVersion}/{variant}/{z}/{x}/{y}/{size}/{format}?apiKey={apiKey}&lg={language}', {
+        attribution: 'Map &copy; 1987-' + new Date().getFullYear() + ' <a href="http://developer.here.com">HERE</a>',
+        subdomains: '1234',
+        mapVersion: 'newest',
+        apiKey: apikey,
+        base: base,
+        variant: variant,
+        maxZoom: 20,
+        type: 'maptile',
+        language: 'eng',
+        format: 'png',
+        size: '256'
+    });
+}
+var hereNormalDay = createHereRasterTileLayer('base', 'normal.day', tokens.HereAPIKey);
+var hereNormalNight = createHereRasterTileLayer('base', 'normal.night', tokens.HereAPIKey);
+var hereSatelliteDay = createHereRasterTileLayer('aerial', 'satellite.day', tokens.HereAPIKey);
+var hereTerrainDay = createHereRasterTileLayer('aerial', 'terrain.day', tokens.HereAPIKey);
+var hereHybridDay = createHereRasterTileLayer('aerial', 'hybrid.day', tokens.HereAPIKey);
+
 
 // return
 var recommendedBaseMapLayer = mapboxStreetsRasterTileLayer;
@@ -77,5 +102,10 @@ var baseMapLayers = {
     "Google Satellite": googleSatellite,
     "Google Terrain": googleTerrain,
     "Google Hybrid": googleHybrid,
+    "Here Normal Day": hereNormalDay,
+    "Here Normal Night": hereNormalNight,
+    "Here Satellite Day": hereSatelliteDay,
+    "Here Terrain Day": hereTerrainDay,
+    "Here Hybrid Day": hereHybridDay,
     "OpenStreetMap": osmLayer
 };
