@@ -25,6 +25,9 @@
 <!-- Note that the current version HERE's service can not work, see https://github.com/leaflet-extras/leaflet-providers/issues/342-->
 <script src="leaflet-providers.js"></script>
 
+<!-- leaflet plugin for vector tile -->
+<!-- https://github.com/Leaflet/Leaflet.VectorGrid -->
+<script src="https://unpkg.com/leaflet.vectorgrid@latest/dist/Leaflet.VectorGrid.bundled.js"></script>
 
 <!-- Define mapid -->
 <div id="mapid"></div>
@@ -40,6 +43,9 @@
 
 <!-- Inject necessary tokens -->
 <script src="token.js"></script>
+
+<!-- Inject styling for vector tiles -->
+<script src="vector_tile_styling.js"></script>
 
 <!-- Inject base map layers -->
 <script src="base_map_layers.js"></script>

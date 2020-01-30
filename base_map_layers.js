@@ -41,6 +41,18 @@ var mapboxSatelliteRasterTileLayer = createMapboxRasterTileLayer('mapbox.satelli
 var mapboxOutdoorsRasterTileLayer = createMapboxRasterTileLayer('mapbox.outdoors', tokens.MapboxAccessToken);
 var mapboxSatelliteStreetsRasterTileLayer = createMapboxRasterTileLayer('mapbox.streets-satellite', tokens.MapboxAccessToken);
 
+// Mapbox Vector Tile Layers
+function createMapboxVectorTileLayer(tileset_id, token) {
+    return L.vectorGrid.protobuf("https://api.mapbox.com/v4/{tileset_id}/{z}/{x}/{y}.mvt?access_token={accessToken}", {
+        rendererFactory: L.canvas.tile,
+        vectorTileLayerStyles: vectorTileStyling,
+        tileset_id: tileset_id,
+        accessToken: token
+    });
+} 
+var mapboxStreetsVectorTileLayer = createMapboxVectorTileLayer('mapbox.mapbox-streets-v8', tokens.MapboxAccessToken);
+
+
 // Google Layers
 var googleRoadmap = L.gridLayer.googleMutant({
 	type: 'roadmap'	// valid values are 'roadmap', 'satellite', 'terrain' and 'hybrid'
@@ -106,6 +118,7 @@ var baseMapLayers = {
     "Mapbox(Static Tile) Navigation Preview Night": mapboxNavigationPreviewNightLayer,
     "Mapbox(Static Tile) Navigation Guidance Day": mapboxNavigationGuidanceDayLayer,
     "Mapbox(Static Tile) Navigation Guidance Night": mapboxNavigationGuidanceNightLayer,
+    "Mapbox(Vector Tile) Streets": mapboxStreetsVectorTileLayer,
     "Google Roadmap": googleRoadmap,
     "Google Satellite": googleSatellite,
     "Google Terrain": googleTerrain,
