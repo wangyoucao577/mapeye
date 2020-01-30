@@ -41,6 +41,20 @@ var mapboxSatelliteRasterTileLayer = createMapboxRasterTileLayer('mapbox.satelli
 var mapboxOutdoorsRasterTileLayer = createMapboxRasterTileLayer('mapbox.outdoors', tokens.MapboxAccessToken);
 var mapboxSatelliteStreetsRasterTileLayer = createMapboxRasterTileLayer('mapbox.streets-satellite', tokens.MapboxAccessToken);
 
+// Google Layers
+var googleRoadmap = L.gridLayer.googleMutant({
+	type: 'roadmap'	// valid values are 'roadmap', 'satellite', 'terrain' and 'hybrid'
+});
+var googleSatellite = L.gridLayer.googleMutant({
+	type: 'satellite'	// valid values are 'roadmap', 'satellite', 'terrain' and 'hybrid'
+});
+var googleTerrain = L.gridLayer.googleMutant({
+	type: 'terrain'	// valid values are 'roadmap', 'satellite', 'terrain' and 'hybrid'
+});
+var googleHybrid = L.gridLayer.googleMutant({
+	type: 'hybrid'	// valid values are 'roadmap', 'satellite', 'terrain' and 'hybrid'
+});
+
 
 // return
 var recommendedBaseMapLayer = mapboxStreetsRasterTileLayer;
@@ -59,5 +73,9 @@ var baseMapLayers = {
     "Mapbox(Static Tile) Navigation Preview Night": mapboxNavigationPreviewNightLayer,
     "Mapbox(Static Tile) Navigation Guidance Day": mapboxNavigationGuidanceDayLayer,
     "Mapbox(Static Tile) Navigation Guidance Night": mapboxNavigationGuidanceNightLayer,
+    "Google Roadmap": googleRoadmap,
+    "Google Satellite": googleSatellite,
+    "Google Terrain": googleTerrain,
+    "Google Hybrid": googleHybrid,
     "OpenStreetMap": osmLayer
 };
