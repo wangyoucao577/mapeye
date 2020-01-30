@@ -80,6 +80,14 @@ var hereSatelliteDay = createHereRasterTileLayer('aerial', 'satellite.day', toke
 var hereTerrainDay = createHereRasterTileLayer('aerial', 'terrain.day', tokens.HereAPIKey);
 var hereHybridDay = createHereRasterTileLayer('aerial', 'hybrid.day', tokens.HereAPIKey);
 
+// TOMTOM Layers
+var tomtomBasicLayer = L.tileLayer.provider('TomTom.Basic', {
+    apikey: tokens.TomtomAPIKey
+});
+var tomtomHybridLayer = L.tileLayer.provider('TomTom.Hybrid', {
+    apikey: tokens.TomtomAPIKey
+});
+
 
 // return
 var recommendedBaseMapLayer = mapboxStreetsRasterTileLayer;
@@ -107,5 +115,7 @@ var baseMapLayers = {
     "Here Satellite Day": hereSatelliteDay,
     "Here Terrain Day": hereTerrainDay,
     "Here Hybrid Day": hereHybridDay,
+    "Tomtom Basic": tomtomBasicLayer,
+    "Tomtom Hybrid": tomtomHybridLayer,
     "OpenStreetMap": osmLayer
 };
