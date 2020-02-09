@@ -17,6 +17,15 @@
 <!-- Google Maps API. TODO: fill in your GOOGLE_MAPS_API_KEY -->
 <script src="https://maps.googleapis.com/maps/api/js?key={{.Tokens.GoogleMapsAPIKey}}" async defer></script>
 
+<!-- Mapbox, HERE, TOMTOM token/api keys. TODO: fill in your tokens/keys -->
+<script>
+var tokens = {
+    MapboxAccessToken: "{{.Tokens.MapboxAccessToken}}",
+    HereAPIKey: "{{.Tokens.HereAPIKey}}",
+    TomtomAPIKey: "{{.Tokens.TomtomAPIKey}}",
+}
+</script>
+
 <!-- Leaflet.GoogleMutant plugin for Google Maps -->
 <script src='https://unpkg.com/leaflet.gridlayer.googlemutant@latest/Leaflet.GoogleMutant.js'></script>
 
@@ -40,9 +49,6 @@
 
 </head>
 <body>
-
-<!-- Inject necessary tokens -->
-<script src="token.js"></script>
 
 <!-- Inject styling for vector tiles -->
 <script src="vector_tile_styling.js"></script>

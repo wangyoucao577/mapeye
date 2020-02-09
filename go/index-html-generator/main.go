@@ -9,7 +9,10 @@ import (
 
 // Tokens stores tokens/keys for various of map providers, e.g. Google, Mapbox, etc.
 type Tokens struct {
-	GoogleMapsAPIKey string
+	GoogleMapsAPIKey  string
+	MapboxAccessToken string
+	HereAPIKey        string
+	TomtomAPIKey      string
 }
 
 func main() {
@@ -18,9 +21,7 @@ func main() {
 	data := struct {
 		Tokens
 	}{
-		Tokens{
-			GoogleMapsAPIKey: flags.googleMapsAPIKey,
-		},
+		Tokens: flags.Tokens,
 	}
 
 	// prepare output HTML file
