@@ -67,6 +67,25 @@ var googleHybrid = L.gridLayer.googleMutant({
 	type: 'hybrid'	// valid values are 'roadmap', 'satellite', 'terrain' and 'hybrid'
 });
 
+// Google's Open layers that no key required
+// https://stackoverflow.com/questions/9394190/leaflet-map-api-with-google-satellite-layer
+var googleOpenStreets = L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',{
+    maxZoom: 20,
+    subdomains:['mt0','mt1','mt2','mt3']
+});
+var googleOpenHybrid = L.tileLayer('http://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}',{
+    maxZoom: 20,
+    subdomains:['mt0','mt1','mt2','mt3']
+});
+var googleOpenSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{
+    maxZoom: 20,
+    subdomains:['mt0','mt1','mt2','mt3']
+});
+var googleOpenTerrain = L.tileLayer('http://{s}.google.com/vt/lyrs=p&x={x}&y={y}&z={z}',{
+    maxZoom: 20,
+    subdomains:['mt0','mt1','mt2','mt3']
+});
+
 // Here Layers
 // https://developer.here.com/documentation/map-tile/dev_guide/topics/quick-start-map-tile.html
 // https://developer.here.com/documentation/map-tile/dev_guide/topics/request-constructing.html#request-constructing__table-basic-request-elements
@@ -102,7 +121,7 @@ var tomtomHybridLayer = L.tileLayer.provider('TomTom.Hybrid', {
 
 
 // return
-var recommendedBaseMapLayer = mapboxStreetsRasterTileLayer;
+var recommendedBaseMapLayer = googleOpenStreets;//mapboxStreetsRasterTileLayer;
 var baseMapLayers = {
     "Mapbox(Raster Tile) Streets": mapboxStreetsRasterTileLayer,
     "Mapbox(Raster Tile) Satellite": mapboxSatelliteRasterTileLayer,
@@ -119,6 +138,10 @@ var baseMapLayers = {
     "Mapbox(Static Tile) Navigation Guidance Day": mapboxNavigationGuidanceDayLayer,
     "Mapbox(Static Tile) Navigation Guidance Night": mapboxNavigationGuidanceNightLayer,
     "Mapbox(Vector Tile) Streets": mapboxStreetsVectorTileLayer,
+    "Google Open Streets": googleOpenStreets,
+    "Google Open Hybrid": googleOpenHybrid,
+    "Google Open Satellite": googleOpenSat,
+    "Google Open Terrain": googleOpenTerrain,
     "Google Roadmap": googleRoadmap,
     "Google Satellite": googleSatellite,
     "Google Terrain": googleTerrain,
